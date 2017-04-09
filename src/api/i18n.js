@@ -15,10 +15,9 @@ class I18n {
     return language.translation[key]
   }
 
-  fixed (language) {
-    let lang = this.resources[language] || {}
-    return (key) => {
-      return lang[key]
+  change (primaryLanguage) {
+    if (Object.hasOwnProperty.call(this.resources, primaryLanguage)) {
+      this.language = primaryLanguage
     }
   }
 }

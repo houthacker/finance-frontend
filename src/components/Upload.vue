@@ -7,7 +7,7 @@
           <input id="records" name="records" @change="selected()" type="file" class="col custom-file-input">
           <span class="custom-file-control">{{ selectedFile }}</span>
         </label>
-        <button class="col btn btn-md btn-secondary" type="submit" >Upload</button>
+        <button class="col btn btn-md btn-secondary" type="submit" >{{ $t('upload') }}</button>
       </div>
     </form>
     <div v-if="result !== null" class="alert alert-dismissible fade show" v-bind:class="alertType" role="alert">
@@ -27,7 +27,7 @@
         recordType: 'asn',
         alertType: 'alert-success',
         result: null,
-        selectedFile: 'Selecteer een bestand...'
+        selectedFile: this.$t('placeholder.select-file')
       }
     },
     methods: {
@@ -40,10 +40,10 @@
         this.$backend.uploadRecords({ data: fd }, function (error, response) {
           if (error) {
             self.alertType = 'alert-danger'
-            self.result = error.statusText || 'Something went wrong!'
+            self.result = error.statusText || this.$t('error.upload')
           } else {
             self.alertType = 'alert-success'
-            self.result = 'Upload succeeded'
+            self.result = this.$t('success.upload')
           }
         })
       },
@@ -53,7 +53,7 @@
         if (f) {
           this.selectedFile = f.name
         } else {
-          this.selectedFile = 'Selecteer een bestand...'
+          this.selectedFile = this.$t('placeholder.select-file')
         }
       }
     }

@@ -12,26 +12,20 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">{{ $t('reports') }} <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li v-if="$auth.loggedIn()" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Upload</a>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ $t('upload') }}</a>
           <div class="dropdown-menu">
             <router-link class="dropdown-item" to="/upload">ASN</router-link>
             <a class="dropdown-item" href="#">Rabobank</a>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Gebruiker</a>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ $t('user') }}</a>
           <div class="dropdown-menu dropdown-menu-right">
-            <router-link v-if="!$auth.loggedIn()" class="dropdown-item" to="/login">Inloggen</router-link>
-            <a v-if="$auth.loggedIn()" class="dropdown-item" href="#" @click.stop="logout()">Uitloggen</a>
+            <router-link v-if="!$auth.loggedIn()" class="dropdown-item" to="/login">{{ $t('login') }}</router-link>
+            <a v-if="$auth.loggedIn()" class="dropdown-item" href="#" @click.stop="logout()">{{ $t('logout') }}</a>
           </div>
         </li>
       </ul>
