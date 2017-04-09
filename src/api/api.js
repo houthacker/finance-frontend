@@ -2,7 +2,7 @@
  * @author houthacker
  */
 
-class BackendClient {
+class Api {
   constructor (config, http) {
     this.config = config
     this.http = http
@@ -12,10 +12,10 @@ class BackendClient {
     this.http.post(this.config.upload, options.data)
       .then(response => {
         cb(null, response)
-      }, response => {
-        cb(response, null)
+      }, error => {
+        cb(error, null)
       })
   }
 }
 
-export default BackendClient
+export default Api

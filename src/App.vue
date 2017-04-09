@@ -1,13 +1,17 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-    <router-view name="upload"></router-view>
+  <div id="app" class="container-fluid">
+    <f-header></f-header>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  import Header from './components/Header'
+
+  export default {
+    name: 'app',
+    components: {
+      Header
+    }
+  }
 </script>
 
