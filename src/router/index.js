@@ -1,13 +1,21 @@
+'use strict'
+
 import Vue from 'vue'
 import Router from 'vue-router'
 
 import Login from '@/components/Login'
 import Upload from '@/components/Upload'
+import UploadedRecords from '@/components/UploadedRecords'
 
 Vue.use(Router)
 
+let preVueLoginCheck = function () {
+  let token = localStorage.getItem('auth.token')
+  return token && typeof token === 'string'
+}
+
 let preventUnAuthenticated = (to, from, next) => {
-  if (!Vue.prototype.$auth.loggedIn()) {
+  if (!preVueLoginCheck()) {
     next('/login?redirect=' + encodeURIComponent(to.path))
   } else {
     next()
@@ -25,8 +33,13 @@ export default new Router({
       component: Login
     },
     {
-      path: '/upload',
+      path: '/transactions/upload',
       component: Upload,
+      beforeEnter: preventUnAuthenticated
+    },
+    {
+      path: '/transactions/list',
+      component: UploadedRecords,
       beforeEnter: preventUnAuthenticated
     }
   ]

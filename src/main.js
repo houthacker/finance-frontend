@@ -8,7 +8,6 @@ import VueResource from 'vue-resource'
 import router from './router'
 import configuration from './finance.conf'
 import api from './api'
-import Auth from './auth'
 
 import Layout from '@/components/Layout'
 import NotAccepted from '@/components/406'
@@ -19,7 +18,7 @@ Vue.component('f-not-accepted', NotAccepted)
 Vue.component('f-layout', Layout)
 
 api.i18n.init({
-  lng: navigator.language,
+  lng: 'nl',
   fallbackLng: 'en',
   resources: configuration.i18n
 }, (instance, error) => {
@@ -31,17 +30,16 @@ api.i18n.init({
     components = {NotAccepted}
   }
 
-  // Globally available objects
-  Vue.prototype.$t = instance.translate.bind(instance)
-  Vue.prototype.$configuration = configuration
-  Vue.prototype.$api = new api.Api(configuration.API, Vue.http)
-  Vue.prototype.$auth = new Auth(configuration.API.auth)
-
   /* eslint-disable no-new */
   new Vue({
     el: '#app',
     router,
     template: template,
-    components: components
+    components: components,
+    created: function () {
+      Vue.prototype.$t = instance.translate.bind(instance)
+      Vue.prototype.$configuration = configuration
+      Vue.prototype.$api = new api.Api(this.$root, configuration.API, Vue.http)
+    }
   })
 })

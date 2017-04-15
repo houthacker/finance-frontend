@@ -27,17 +27,19 @@
         }
       }
     },
+    mounted: function () {
+      let self = this
+      this.$root.$on('login', function () {
+        window.location.href = this.$router.resolve(decodeURIComponent(this.$route.query.redirect || '/')).href
+      })
+      this.$root.$on('login.error', function (error) {
+        self.error = self.$t(error)
+      })
+    },
     methods: {
       login: function () {
-        let self = this
         this.error = null
-        this.$auth.login(this.credentials, function (success) {
-          if (success === true) {
-            window.location.href = decodeURIComponent(self.$route.query.redirect || '/')
-          } else {
-            self.error = self.$t('error.login')
-          }
-        })
+        this.$api.login(this.credentials)
       }
     }
   }

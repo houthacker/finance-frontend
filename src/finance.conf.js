@@ -6,7 +6,14 @@ let env = process.env.NODE_ENV || 'development'
 
 let production = {
   API: {
-    upload: 'http://localhost:3030/upload',
+    transactions: {
+      upload: {
+        post: 'http://localhost:3030/transactions'
+      },
+      uploaded: {
+        get: 'http://localhost:3030/transactions'
+      }
+    },
     auth: {
       login: 'http://localhost:3030/login',
       logout: 'http://localhost:3030/logout'
@@ -16,33 +23,41 @@ let production = {
     nl: {
       translation: {
         'navbar-brand': 'Huishoudboekje',
-        'reports': 'Overzichten',
+        'transactions': 'Transacties',
         'upload': 'Uploaden',
         'user': 'Gebruiker',
         'login': 'Inloggen',
         'logout': 'Uitloggen',
         'username': 'Gebruikersnaam',
         'password': 'Wachtwoord',
-        'error.login': 'Inloggen mislukt',
-        'error.upload': 'Uploaden mislukt',
-        'success.upload': 'Uploaden gelukt',
-        'placeholder.select-file': 'Selecteer een bestand...'
+        'login.error': 'Inloggen mislukt',
+        'upload.error': 'Uploaden mislukt',
+        'upload.success': 'Uploaden gelukt',
+        'placeholder.select-file': 'Selecteer een bestand...',
+        'date': 'Datum',
+        'amount': 'Bedrag',
+        'actions': 'Acties',
+        'counterparty.accountno': 'Tegenrekening'
       }
     },
     en: {
       translation: {
         'navbar-brand': 'Personal expenses',
-        'reports': 'Reports',
+        'transactions': 'Transactions',
         'upload': 'Upload',
         'user': 'User',
         'login': 'Login',
         'logout': 'Logout',
         'username': 'User name',
         'password': 'Password',
-        'error.login': 'Login failed',
-        'error.upload': 'Upload failed',
-        'success.upload': 'Upload successful',
-        'placeholder.select-file': 'Select file...'
+        'login.error': 'Login failed',
+        'upload.error': 'Upload failed',
+        'upload.success': 'Upload successful',
+        'placeholder.select-file': 'Select file...',
+        'date': 'Date',
+        'amount': 'Amount',
+        'actions': 'Actions',
+        'counterparty.accountno': 'Counter Account no.'
       }
     }
   }

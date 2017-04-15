@@ -1,13 +1,13 @@
 <template>
   <div class="container align-items-start upload-form">
-    <form ref="upload" id="upload" method="post" @submit.prevent="upload" enctype="multipart/form-data">
+    <form ref="upload" id="upload" method="post" @submit.prevent="upload()" enctype="multipart/form-data">
       <div class="form-group">
         <input name="record_type" :value="recordType" hidden/>
         <label class="col custom-file">
           <input id="records" name="records" @change="selected()" type="file" class="col custom-file-input">
           <span class="custom-file-control">{{ selectedFile }}</span>
         </label>
-        <button class="col btn btn-md btn-secondary" type="submit" >{{ $t('upload') }}</button>
+        <button class="col btn btn-md btn-primary" type="submit" >{{ $t('upload') }}</button>
       </div>
     </form>
     <div v-if="result !== null" class="alert alert-dismissible fade show" v-bind:class="alertType" role="alert">
@@ -37,13 +37,13 @@
         let form = document.getElementById('upload')
         let fd = new FormData(form)
 
-        this.$backend.uploadRecords({ data: fd }, function (error, response) {
+        this.$api.uploadRecords({ data: fd }, function (response, error) {
           if (error) {
             self.alertType = 'alert-danger'
-            self.result = error.statusText || this.$t('error.upload')
+            self.result = error.statusText || self.$t('upload.error')
           } else {
             self.alertType = 'alert-success'
-            self.result = this.$t('success.upload')
+            self.result = self.$t('upload.success')
           }
         })
       },

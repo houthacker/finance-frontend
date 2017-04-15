@@ -4,31 +4,30 @@
 
 class Auth {
 
-  constructor (backend) {
-    this.backend = backend
+  constructor (config) {
+    this.config = config
   }
 
   login (credentials, cb) {
-    console.log(credentials)
     if (!this.loggedIn()) {
-      sessionStorage.setItem('auth.token', 'TOKEN')
+      localStorage.setItem('auth.token', 'TOKEN')
     }
     if (cb) {
-      cb(true)
+      cb({}, null)
     }
   }
 
   logout (cb) {
     if (this.loggedIn()) {
-      sessionStorage.removeItem('auth.token')
+      localStorage.removeItem('auth.token')
     }
     if (cb) {
-      cb()
+      cb({}, null)
     }
   }
 
   loggedIn () {
-    let token = sessionStorage.getItem('auth.token')
+    let token = localStorage.getItem('auth.token')
     return token && typeof token === 'string'
   }
 }
