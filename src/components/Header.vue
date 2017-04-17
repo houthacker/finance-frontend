@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul v-if="authenticated" class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <router-link class="nav-link" to="/transactions/uploaded">{{ $t('transactions') }} <span class="sr-only">(current)</span></router-link>
+          <router-link class="nav-link" to="/transactions/list">{{ $t('transactions') }} <span class="sr-only">(current)</span></router-link>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">

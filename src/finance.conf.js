@@ -37,7 +37,16 @@ let production = {
         'date': 'Datum',
         'amount': 'Bedrag',
         'actions': 'Acties',
-        'counterparty.accountno': 'Tegenrekening'
+        'counterparty.accountno': 'Tegenrekening',
+        'stage-transaction': 'Klaarzetten voor bewerken',
+        'unstage-transaction': 'Verwijder uit bewerklijst',
+        'description': 'Beschrijving',
+        'add-labels': 'Labels toevoegen',
+        'cancel': 'Annuleren',
+        'save': 'Opslaan',
+        'edit-transaction-labels': 'Bewerk __AMOUNT__ transacties',
+        'search': 'Zoek',
+        'add': 'Toevoegen'
       }
     },
     en: {
@@ -57,7 +66,16 @@ let production = {
         'date': 'Date',
         'amount': 'Amount',
         'actions': 'Actions',
-        'counterparty.accountno': 'Counter Account no.'
+        'counterparty.accountno': 'Counter Account no.',
+        'stage-transaction': 'Stage for editing',
+        'unstage-transaction': 'Remove from edit list',
+        'description': 'Description',
+        'add-labels': 'Add labels',
+        'cancel': 'Cancel',
+        'save': 'Opslaan',
+        'edit-transaction-labels': 'Edit __AMOUNT__ transactions',
+        'search': 'Search',
+        'add': 'Add'
       }
     }
   }

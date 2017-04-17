@@ -5,7 +5,7 @@ import Router from 'vue-router'
 
 import Login from '@/components/Login'
 import Upload from '@/components/Upload'
-import UploadedRecords from '@/components/UploadedRecords'
+import UploadedTransactions from '@/components/UploadedTransactions'
 
 Vue.use(Router)
 
@@ -39,7 +39,7 @@ export default new Router({
     },
     {
       path: '/transactions/list',
-      component: UploadedRecords,
+      component: UploadedTransactions,
       beforeEnter: preventUnAuthenticated
     }
   ]

@@ -10,9 +10,16 @@ class I18n {
     this.fallbackLanguage = options.fallbackLng || 'en'
   }
 
-  translate (key) {
+  translate (key, options) {
     let language = this.resources[this.language] || this.resources[this.fallbackLanguage]
-    return language.translation[key]
+    let translation = language.translation[key]
+
+    if (options && options.replace) {
+      for (key in options.replace) {
+        translation = translation.replace(key, options.replace[key])
+      }
+    }
+    return translation
   }
 
   change (primaryLanguage) {
